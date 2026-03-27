@@ -177,12 +177,24 @@ body {
   background-size: 60px 60px;
 }
 
-.hero-content {
+/* Split hero layout */
+.hero-split {
   position: relative;
   z-index: 2;
-  text-align: center;
-  padding: 40px 24px;
-  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: 1160px;
+  padding: 40px 40px;
+  margin-top: 40px;
+}
+
+.hero-content {
+  flex: 1;
+  text-align: left;
+  max-width: 580px;
 }
 
 .hero-tag {
@@ -208,9 +220,9 @@ body {
 }
 
 .hero-sub {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--muted);
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 .hero-sub strong { color: var(--text); }
 
@@ -251,8 +263,8 @@ body {
 .hero-stats {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px;
+  justify-content: flex-start;
+  gap: 32px;
   flex-wrap: wrap;
 }
 
@@ -648,6 +660,187 @@ body {
 }
 .surprise-note strong { color: var(--gold); }
 .surprise-note em { color: var(--text); font-style: normal; font-weight: 600; }
+
+/* ========================
+   PHONE MOCKUP
+======================== */
+.hero-phone-wrap {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: phonefloat 4s ease-in-out infinite alternate;
+}
+@keyframes phonefloat {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-16px); }
+}
+
+.phone-glow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(circle at 50% 60%, rgba(212,168,67,0.2), rgba(91,142,240,0.12), transparent 70%);
+  pointer-events: none;
+  border-radius: 60px;
+  filter: blur(20px);
+}
+
+.phone-mockup {
+  width: 240px;
+  background: #111;
+  border-radius: 40px;
+  border: 6px solid #2a2a2a;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 40px 80px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-notch {
+  width: 90px;
+  height: 20px;
+  background: #111;
+  border-radius: 0 0 16px 16px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.phone-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/16;
+  background: #000;
+  overflow: hidden;
+}
+
+.phone-screen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Instagram reel UI overlay */
+.reel-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.35) 0%,
+    transparent 30%,
+    transparent 55%,
+    rgba(0,0,0,0.7) 100%
+  );
+}
+
+.reel-top {
+  display: flex;
+  justify-content: flex-end;
+}
+.reel-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  padding: 3px 8px;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+}
+
+.reel-side-actions {
+  position: absolute;
+  right: 10px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.reel-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 1.1rem;
+}
+.reel-action span {
+  font-size: 0.55rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.reel-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.reel-username {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fff;
+}
+.reel-caption {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.3;
+}
+.reel-music {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+
+.phone-home-bar {
+  height: 20px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.phone-home-bar::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+}
+
+.phone-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(212,168,67,0.1);
+  border: 1px solid rgba(212,168,67,0.25);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* Responsive: hide phone on small screens */
+@media (max-width: 900px) {
+  .hero-split { flex-direction: column; align-items: center; padding: 30px 24px; }
+  .hero-content { text-align: center; }
+  .hero-stats { justify-content: center; }
+  .hero-phone-wrap { order: -1; }
+  .phone-mockup { width: 180px; }
+}
+@media (max-width: 640px) {
+  .phone-mockup { width: 150px; }
+}
 
 /* ========================
    CLOSING SECTION
