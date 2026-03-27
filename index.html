@@ -64,10 +64,17 @@
       <!-- RIGHT: Floating Phone Video Mockup -->
       <div class="hero-phone-wrap fade-up">
         <div class="phone-glow"></div>
+
+        <!-- MUTE BUTTON — outside phone, on the right side -->
+        <button class="float-mute-btn" id="muteToggle" title="Click to Unmute">
+          <span class="float-mute-icon">🔇</span>
+          <span class="float-mute-label">Tap for Sound</span>
+        </button>
+
         <div class="phone-mockup">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <video autoplay muted loop playsinline src="video1.mp4">
+            <video id="reelVideo" autoplay muted loop playsinline src="video1.mp4">
               <source src="video1.mp4" type="video/mp4"/>
             </video>
             <!-- Overlay UI like Instagram Reels -->

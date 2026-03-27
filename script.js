@@ -37,6 +37,28 @@ const barObserver = new IntersectionObserver((entries) => {
 bars.forEach(bar => barObserver.observe(bar));
 
 // ========================
+// MUTE / UNMUTE TOGGLE
+// ========================
+const muteBtn   = document.getElementById('muteToggle');
+const reelVideo = document.getElementById('reelVideo');
+
+if (muteBtn && reelVideo) {
+  muteBtn.addEventListener('click', () => {
+    if (reelVideo.muted) {
+      reelVideo.muted = false;
+      muteBtn.querySelector('.float-mute-icon').textContent = '🔊';
+      muteBtn.querySelector('.float-mute-label').textContent = 'Tap to Mute';
+      muteBtn.classList.add('unmuted');
+    } else {
+      reelVideo.muted = true;
+      muteBtn.querySelector('.float-mute-icon').textContent = '🔇';
+      muteBtn.querySelector('.float-mute-label').textContent = 'Tap for Sound';
+      muteBtn.classList.remove('unmuted');
+    }
+  });
+}
+
+// ========================
 // SMOOTH SCROLL FOR NAV
 // ========================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
